@@ -43,7 +43,7 @@ CUB.ready(() => {
 function createLigne(ligneGid: number, nom: string, color: string) {
   const layer = new CUB.Layer.Dynamic(
     nom,
-    '//data.bordeaux-metropole.fr/wfs?key=258BILMNYZ',
+    '//data.bordeaux-metropole.fr/wfs?key=11DGGILLWZ',
     {
       layerName: 'SV_CHEM_L',
       // Filtre sur l'ID de la ligne + uniquement les chemins principaux
@@ -69,7 +69,7 @@ function createLigne(ligneGid: number, nom: string, color: string) {
 function createVehicule(ligneGid: number, label: string, color: string) {
   const layer = new CUB.Layer.Dynamic(
     'Tram ' + label,
-    '//data.bordeaux-metropole.fr/wfs?key=258BILMNYZ',
+    '//data.bordeaux-metropole.fr/wfs?key=11DGGILLWZ',
     {
       layerName: 'SV_VEHIC_P',
       // Filtre sur l'ID de la ligne + uniquement les chemins principaux
