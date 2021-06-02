@@ -35,7 +35,7 @@ CUB.ready(() => {
     */
 
     const lignes_bus = [
-        { ligneGid: 6, nom: 'Liane 8', label: '8', color: '#DA003E' }
+        { ligneGid: 6, nom: 'Liane 8', label: '8', color: '#3A95CB' }
     ]
     
     for(const ligne of lignes) {

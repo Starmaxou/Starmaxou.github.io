@@ -27,7 +27,7 @@ CUB.ready(function () {
     ]
     */
     var lignes_bus = [
-        { ligneGid: 6, nom: 'Liane 8', label: '8', color: '#DA003E' }
+        { ligneGid: 6, nom: 'Liane 8', label: '8', color: '#3A95CB' }
     ];
     for (var _i = 0, lignes_1 = lignes; _i < lignes_1.length; _i++) {
         var ligne = lignes_1[_i];
