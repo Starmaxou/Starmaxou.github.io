@@ -60,7 +60,7 @@ function createVehicule(ligneGid, label, color) {
         layerName: 'SV_VEHIC_P',
         // Filtre sur l'ID de la ligne + uniquement les chemins principaux
         wfsFilter: "<PropertyIsEqualTo><PropertyName>RS_SV_LIGNE_A</PropertyName><Literal>" + ligneGid + "</Literal></PropertyIsEqualTo>",
-        propertyname: ['GEOM', 'TERMINUS', 'STATUS'],
+        propertyname: ['GEOM', 'TERMINUS', 'ETAT'],
         loadAllAtOnce: true,
         refreshInterval: 10000,
         style: new CUB.Style({
@@ -71,7 +71,7 @@ function createVehicule(ligneGid, label, color) {
             labelOutlineWidth: 1.5,
             labelSize: 12,
             labelBold: true,
-            label: '${TERMINUS}' + '\n' + '${STATUS}',
+            label: '${TERMINUS}' + '\n' + '${ETAT}',
             labelYOffset: -15,
             labelMaxScaledenom: 25000
         })
