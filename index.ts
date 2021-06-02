@@ -41,7 +41,7 @@ CUB.ready(() => {
  * @param nom 
  */
 function createLigne(ligneGid: number, nom: string, color: string) {
-    const layer = new CUB.Layer.Dynamic(nom, '//data.bordeaux-metropole.fr/wfs?key=258BILMNYZ', {
+    const layer = new CUB.Layer.Dynamic(nom, '//data.bordeaux-metropole.fr/wfs?key=11DGGILLWZ', {
         layerName: 'SV_CHEM_L',
         // Filtre sur l'ID de la ligne + uniquement les chemins principaux
         wfsFilter: `<And><PropertyIsEqualTo><PropertyName>RS_SV_LIGNE_A</PropertyName><Literal>${ligneGid}</Literal></PropertyIsEqualTo><PropertyIsEqualTo><PropertyName>PRINCIPAL</PropertyName><Literal>1</Literal></PropertyIsEqualTo></And>`,
@@ -62,11 +62,11 @@ function createLigne(ligneGid: number, nom: string, color: string) {
  * Crée la couche des véhivules
  */
 function createVehicule(ligneGid: number, label: string, color: string) {
-    const layer = new CUB.Layer.Dynamic('Tram ' + label, '//data.bordeaux-metropole.fr/wfs?key=258BILMNYZ', {
+    const layer = new CUB.Layer.Dynamic('Tram ' + label, '//data.bordeaux-metropole.fr/wfs?key=11DGGILLWZ', {
         layerName: 'SV_VEHIC_P',
         // Filtre sur l'ID de la ligne + uniquement les chemins principaux
         wfsFilter: `<PropertyIsEqualTo><PropertyName>RS_SV_LIGNE_A</PropertyName><Literal>${ligneGid}</Literal></PropertyIsEqualTo>`,
-        propertyname: ['GEOM', 'TERMINUS'],
+        propertyname: ['GEOM', 'TERMINUS','STATUS'],
         loadAllAtOnce: true,
         refreshInterval: 10000,
         style: new CUB.Style({ // Style par défaut
@@ -77,7 +77,7 @@ function createVehicule(ligneGid: number, label: string, color: string) {
             labelOutlineWidth: 1.5,
             labelSize: 12,
             labelBold: true,
-            label: '${TERMINUS}', // Libellé de l'étiquette	
+            label: '${TERMINUS}'+'\n'+'${STATUS}', // Libellé de l'étiquette	
             labelYOffset: -15,
             labelMaxScaledenom: 25000
         })
