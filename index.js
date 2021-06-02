@@ -21,6 +21,11 @@ CUB.ready(function () {
         { ligneGid: 61, nom: 'Ligne C', label: 'C', color: '#D15094' },
         { ligneGid: 62, nom: 'Ligne D', label: 'D', color: '#91619D' }
     ];
+    /*
+    const lignes = [
+        { ligneGid: 60, nom: 'Ligne B', label: 'B', color: '#DA003E' }
+    ]
+    */
     for (var _i = 0, lignes_1 = lignes; _i < lignes_1.length; _i++) {
         var ligne = lignes_1[_i];
         createLigne(ligne.ligneGid, ligne.nom, ligne.color);
@@ -33,7 +38,7 @@ CUB.ready(function () {
  * @param nom
  */
 function createLigne(ligneGid, nom, color) {
-    var layer = new CUB.Layer.Dynamic(nom, '//data.bordeaux-metropole.fr/wfs?key=258BILMNYZ', {
+    var layer = new CUB.Layer.Dynamic(nom, '//data.bordeaux-metropole.fr/wfs?key=11DGGILLWZ', {
         layerName: 'SV_CHEM_L',
         // Filtre sur l'ID de la ligne + uniquement les chemins principaux
         wfsFilter: "<And><PropertyIsEqualTo><PropertyName>RS_SV_LIGNE_A</PropertyName><Literal>" + ligneGid + "</Literal></PropertyIsEqualTo><PropertyIsEqualTo><PropertyName>PRINCIPAL</PropertyName><Literal>1</Literal></PropertyIsEqualTo></And>",
@@ -51,11 +56,11 @@ function createLigne(ligneGid, nom, color) {
  * Crée la couche des véhivules
  */
 function createVehicule(ligneGid, label, color) {
-    var layer = new CUB.Layer.Dynamic('Tram ' + label, '//data.bordeaux-metropole.fr/wfs?key=258BILMNYZ', {
+    var layer = new CUB.Layer.Dynamic('Tram ' + label, '//data.bordeaux-metropole.fr/wfs?key=11DGGILLWZ', {
         layerName: 'SV_VEHIC_P',
         // Filtre sur l'ID de la ligne + uniquement les chemins principaux
         wfsFilter: "<PropertyIsEqualTo><PropertyName>RS_SV_LIGNE_A</PropertyName><Literal>" + ligneGid + "</Literal></PropertyIsEqualTo>",
-        propertyname: ['GEOM', 'TERMINUS'],
+        propertyname: ['GEOM', 'TERMINUS', 'STATUS'],
         loadAllAtOnce: true,
         refreshInterval: 10000,
         style: new CUB.Style({
@@ -66,7 +71,7 @@ function createVehicule(ligneGid, label, color) {
             labelOutlineWidth: 1.5,
             labelSize: 12,
             labelBold: true,
-            label: '${TERMINUS}',
+            label: '${TERMINUS}' + '\n' + '${STATUS}',
             labelYOffset: -15,
             labelMaxScaledenom: 25000
         })

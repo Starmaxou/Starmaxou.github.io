@@ -21,12 +21,18 @@ CUB.ready(() => {
     });
 
     // Chargement des lignes de tram
+    
     const lignes = [
         { ligneGid: 59, nom: 'Ligne A', label: 'A', color: '#81197F' },
         { ligneGid: 60, nom: 'Ligne B', label: 'B', color: '#DA003E' },
         { ligneGid: 61, nom: 'Ligne C', label: 'C', color: '#D15094' },
         { ligneGid: 62, nom: 'Ligne D', label: 'D', color: '#91619D' }
     ]
+    /*
+    const lignes = [
+        { ligneGid: 60, nom: 'Ligne B', label: 'B', color: '#DA003E' }
+    ]
+    */
     
     for(const ligne of lignes) {
         createLigne(ligne.ligneGid, ligne.nom, ligne.color);
