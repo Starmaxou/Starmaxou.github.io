@@ -86,7 +86,7 @@ function createVehicule(ligneGid, label, color) {
     });
 }
 function createBus(ligneGid, label, color) {
-    var layer = new CUB.Layer.Dynamic('Tram ' + label, '//data.bordeaux-metropole.fr/wfs?key=11DGGILLWZ', {
+    var layer = new CUB.Layer.Dynamic('Bus ' + label, '//data.bordeaux-metropole.fr/wfs?key=11DGGILLWZ', {
         layerName: 'SV_VEHIC_P',
         // Filtre sur l'ID de la ligne + uniquement les chemins principaux
         wfsFilter: "<PropertyIsEqualTo><PropertyName>RS_SV_LIGNE_A</PropertyName><Literal>" + ligneGid + "</Literal></PropertyIsEqualTo>",
@@ -94,7 +94,7 @@ function createBus(ligneGid, label, color) {
         loadAllAtOnce: true,
         refreshInterval: 10000,
         style: new CUB.Style({
-            symbol: "Logo_Bus_Bordeaux_ligne_" + label.toLowerCase() + ".png",
+            symbol: "Logo_Bus_Bordeaux_ligne_" + label + ".png",
             opacity: 100,
             size: 10,
             labelColor: new CUB.Color(color),
