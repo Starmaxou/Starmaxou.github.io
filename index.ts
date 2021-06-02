@@ -108,7 +108,7 @@ function createBus(ligneGid: number, label: string, color: string) {
         loadAllAtOnce: true,
         refreshInterval: 10000,
         style: new CUB.Style({ // Style par défaut
-            symbol: `Logo_Bus_Bordeaux_ligne_${label}.png`,
+            symbol: `Pictures/Bus/Logo_Bus_Bordeaux_ligne_${label}.png`,
             opacity: 100,
             size: 10,
             labelColor: new CUB.Color(color),
