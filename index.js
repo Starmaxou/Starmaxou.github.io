@@ -26,10 +26,18 @@ CUB.ready(function () {
         { ligneGid: 60, nom: 'Ligne B', label: 'B', color: '#DA003E' }
     ]
     */
+    var lignes_bus = [
+        { ligneGid: 6, nom: 'Liane 8', label: '8', color: '#DA003E' }
+    ];
     for (var _i = 0, lignes_1 = lignes; _i < lignes_1.length; _i++) {
         var ligne = lignes_1[_i];
         createLigne(ligne.ligneGid, ligne.nom, ligne.color);
         createVehicule(ligne.ligneGid, ligne.label, ligne.color);
+    }
+    for (var _a = 0, lignes_bus_1 = lignes_bus; _a < lignes_bus_1.length; _a++) {
+        var ligne = lignes_bus_1[_a];
+        createLigne(ligne.ligneGid, ligne.nom, ligne.color);
+        createBus(ligne.ligneGid, ligne.label, ligne.color);
     }
 });
 /**
@@ -65,6 +73,28 @@ function createVehicule(ligneGid, label, color) {
         refreshInterval: 10000,
         style: new CUB.Style({
             symbol: "https://data.bordeaux-metropole.fr/opendemos/assets/images/saeiv/tram_" + label.toLowerCase() + ".png",
+            opacity: 100,
+            size: 10,
+            labelColor: new CUB.Color(color),
+            labelOutlineWidth: 1.5,
+            labelSize: 12,
+            labelBold: true,
+            label: '${TERMINUS}' + '\n' + '${ETAT}',
+            labelYOffset: -15,
+            labelMaxScaledenom: 25000
+        })
+    });
+}
+function createBus(ligneGid, label, color) {
+    var layer = new CUB.Layer.Dynamic('Tram ' + label, '//data.bordeaux-metropole.fr/wfs?key=11DGGILLWZ', {
+        layerName: 'SV_VEHIC_P',
+        // Filtre sur l'ID de la ligne + uniquement les chemins principaux
+        wfsFilter: "<PropertyIsEqualTo><PropertyName>RS_SV_LIGNE_A</PropertyName><Literal>" + ligneGid + "</Literal></PropertyIsEqualTo>",
+        propertyname: ['GEOM', 'TERMINUS', 'ETAT'],
+        loadAllAtOnce: true,
+        refreshInterval: 10000,
+        style: new CUB.Style({
+            symbol: "Logo_Bus_Bordeaux_ligne_" + label.toLowerCase() + ".png",
             opacity: 100,
             size: 10,
             labelColor: new CUB.Color(color),

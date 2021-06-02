@@ -33,10 +33,19 @@ CUB.ready(() => {
         { ligneGid: 60, nom: 'Ligne B', label: 'B', color: '#DA003E' }
     ]
     */
+
+    const lignes_bus = [
+        { ligneGid: 6, nom: 'Liane 8', label: '8', color: '#DA003E' }
+    ]
     
     for(const ligne of lignes) {
         createLigne(ligne.ligneGid, ligne.nom, ligne.color);
         createVehicule(ligne.ligneGid, ligne.label, ligne.color);
+    }
+
+    for(const ligne of lignes_bus) {
+        createLigne(ligne.ligneGid, ligne.nom, ligne.color);
+        createBus(ligne.ligneGid, ligne.label, ligne.color);
     }
 });
 
@@ -77,6 +86,29 @@ function createVehicule(ligneGid: number, label: string, color: string) {
         refreshInterval: 10000,
         style: new CUB.Style({ // Style par défaut
             symbol: `https://data.bordeaux-metropole.fr/opendemos/assets/images/saeiv/tram_${label.toLowerCase()}.png`,
+            opacity: 100,
+            size: 10,
+            labelColor: new CUB.Color(color),
+            labelOutlineWidth: 1.5,
+            labelSize: 12,
+            labelBold: true,
+            label: '${TERMINUS}'+'\n'+'${ETAT}', // Libellé de l'étiquette	
+            labelYOffset: -15,
+            labelMaxScaledenom: 25000
+        })
+    });
+}
+
+function createBus(ligneGid: number, label: string, color: string) {
+    const layer = new CUB.Layer.Dynamic('Tram ' + label, '//data.bordeaux-metropole.fr/wfs?key=11DGGILLWZ', {
+        layerName: 'SV_VEHIC_P',
+        // Filtre sur l'ID de la ligne + uniquement les chemins principaux
+        wfsFilter: `<PropertyIsEqualTo><PropertyName>RS_SV_LIGNE_A</PropertyName><Literal>${ligneGid}</Literal></PropertyIsEqualTo>`,
+        propertyname: ['GEOM', 'TERMINUS','ETAT'],
+        loadAllAtOnce: true,
+        refreshInterval: 10000,
+        style: new CUB.Style({ // Style par défaut
+            symbol: `Logo_Bus_Bordeaux_ligne_${label.toLowerCase()}.png`,
             opacity: 100,
             size: 10,
             labelColor: new CUB.Color(color),
