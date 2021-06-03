@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Carte simple - API CUB</title>
+		<script type="text/javascript" src="http://data.bordeaux-metropole.fr/api/cub.xjs?key=11DGGILLWZ"></script>
+		<script type="text/javascript">
+			CUB.ready(function() {
+				//alert('API prête !');
+				// Initialise l'API
+				CUB.init();
+
+				// Passage en coordonnées GPS (longitude latitude en degrés décimaux)
+				CUB.projection(CUB.projections.WGS84);
+				
+				// On met le fond de plan OpenStreetMap
+				new CUB.Layer.Background('Mon arrière-plan', CUB.Layer.Background.layerType.OPENSTREETMAP);
+				
+				// On modifie l'étendue maximale de la carte
+				CUB.maxExtent(new CUB.Extent(2, 48.7, 2.7, 49))
+
+				// On cadre sur Paris
+				//CUB.moveToExtent(CUB.maxExtent());
+
+				/*
+				// Création de la couche
+				var dynamique = new CUB.Layer.Dynamic('Ma couche dynamique', 'http://data.bordeaux-metropole.fr/wfs?key=11DGGILLWZ', { 
+					layerName: 'FV_COMMU_S',
+					selectable: true
+				});
+				// Évènement déclenché à la sélection d'un objet (entité)
+				dynamique.onSelect = function(entity) 
+				{
+					alert('Vous avez sélectionné ' + entity.attributes.NOMNG);
+				}
+				*/
+			});
+		</script>
+	</head>
+	<body>
+        <button onclick="window.location.href = 'index.html';">Cliquez Ici - vers index</button>
+		<!-- <div id="zone_carte" style="width: 256px; height: 256px; border: 1px solid black"></div>		 -->
+	</body>
+</html>
