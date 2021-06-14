@@ -102,9 +102,29 @@ function createBus(ligneGid, label, color) {
         })
     });
 }
-function createArret(label) {
-    var layer = new CUB.Layer.Static('Arret Bus ' + label, '//data.bordeaux-metropole.fr/wms?key=ABCDE01234', {
-        layerName: 'SV_ARRET_P'
+function CheminBus(ligneGid, label, color) {
+    var layer_chemin = new CUB.Layer.Dynamic('Chemin Bus ' + label, '//data.bordeaux-metropole.fr/wfs?key=11DGGILLWZ', {
+        layerName: 'SV_CHEMIN_L',
+        wfsFilter: "<PropertyIsEqualTo><PropertyName>RS_SV_LIGNE_A</PropertyName><Literal>" + ligneGid + "</Literal></PropertyIsEqualTo>",
+        propertyname: ['GID']
+    });
+    var layer_arret = new CUB.Layer.Static('Arret Bus ' + label, '//data.bordeaux-metropole.fr/wps?key=11DGGILLWZ', {
+        idenifier: 'saeiv_arrets_chemin',
+        gid: layer_chemin.propertyname[0],
+        propertyname: ['GEOM', 'libelle'],
+        loadAllAtOnce: true,
+        style: new CUB.Style({
+            symbol: "Pictures/Bus/Logo_Bus_Bordeaux_ligne_" + label + ".png",
+            opacity: 100,
+            size: 5,
+            labelColor: new CUB.Color(color),
+            labelOutlineWidth: 1.5,
+            labelSize: 12,
+            labelBold: true,
+            label: '${libelle}',
+            labelYOffset: -15,
+            labelMaxScaledenom: 25000
+        })
     });
 }
 /**
