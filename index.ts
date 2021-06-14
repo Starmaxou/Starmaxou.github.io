@@ -2,7 +2,7 @@
 declare var CUB: any;
 
 // Couches restantes à charger
-let remaining = 4;
+let remaining = 10;
 let loadingPanel;
 
 CUB.ready(() => {
@@ -28,11 +28,6 @@ CUB.ready(() => {
         { ligneGid: 61, nom: 'Ligne C', label: 'C', color: '#D15094' },
         { ligneGid: 62, nom: 'Ligne D', label: 'D', color: '#91619D' }
     ]
-    /*
-    const lignes = [
-        { ligneGid: 60, nom: 'Ligne B', label: 'B', color: '#DA003E' }
-    ]
-    */
 
     const lignes_bus = [
         { ligneGid: 6, nom: 'Liane 8', label: '8', color: '#3A95CB' }
@@ -120,6 +115,12 @@ function createBus(ligneGid: number, label: string, color: string) {
             labelMaxScaledenom: 25000
         })
     });
+}
+
+function createArret(label: string){
+    const layer = new CUB.Layer.Static('Arret Bus '+label, '//data.bordeaux-metropole.fr/wms?key=ABCDE01234', {
+        layerName: 'SV_ARRET_P'
+    })
 }
 
 /**

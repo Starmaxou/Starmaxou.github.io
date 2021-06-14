@@ -1,5 +1,5 @@
 // Couches restantes à charger
-var remaining = 4;
+var remaining = 10;
 var loadingPanel;
 CUB.ready(function () {
     // Initialisation de l'API CUB
@@ -21,11 +21,6 @@ CUB.ready(function () {
         { ligneGid: 61, nom: 'Ligne C', label: 'C', color: '#D15094' },
         { ligneGid: 62, nom: 'Ligne D', label: 'D', color: '#91619D' }
     ];
-    /*
-    const lignes = [
-        { ligneGid: 60, nom: 'Ligne B', label: 'B', color: '#DA003E' }
-    ]
-    */
     var lignes_bus = [
         { ligneGid: 6, nom: 'Liane 8', label: '8', color: '#3A95CB' }
     ];
@@ -105,6 +100,11 @@ function createBus(ligneGid, label, color) {
             labelYOffset: -15,
             labelMaxScaledenom: 25000
         })
+    });
+}
+function createArret(label) {
+    var layer = new CUB.Layer.Static('Arret Bus ' + label, '//data.bordeaux-metropole.fr/wms?key=ABCDE01234', {
+        layerName: 'SV_ARRET_P'
     });
 }
 /**
