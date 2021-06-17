@@ -4,6 +4,7 @@ declare var CUB: any;
 // Couches restantes à charger
 let remaining = 10;
 let loadingPanel;
+let refreshTime = 5000;
 
 CUB.ready(() => {
     // Initialisation de l'API CUB
@@ -79,7 +80,7 @@ function createVehicule(ligneGid: number, label: string, color: string) {
         wfsFilter: `<PropertyIsEqualTo><PropertyName>RS_SV_LIGNE_A</PropertyName><Literal>${ligneGid}</Literal></PropertyIsEqualTo>`,
         propertyname: ['GEOM', 'TERMINUS','VITESSE'],
         loadAllAtOnce: true,
-        refreshInterval: 10000,
+        refreshInterval: refreshTime,
         style: new CUB.Style({ // Style par défaut
             symbol: `https://data.bordeaux-metropole.fr/opendemos/assets/images/saeiv/tram_${label.toLowerCase()}.png`,
             opacity: 100,
@@ -102,7 +103,7 @@ function createBus(ligneGid: number, label: string, color: string) {
         wfsFilter: `<PropertyIsEqualTo><PropertyName>RS_SV_LIGNE_A</PropertyName><Literal>${ligneGid}</Literal></PropertyIsEqualTo>`,
         propertyname: ['GEOM', 'TERMINUS','VITESSE'],
         loadAllAtOnce: true,
-        refreshInterval: 10000,
+        refreshInterval: refreshTime,
         style: new CUB.Style({ // Style par défaut
             symbol: `Pictures/Bus/Logo_Bus_Bordeaux_ligne_${label}.png`,
             opacity: 100,
