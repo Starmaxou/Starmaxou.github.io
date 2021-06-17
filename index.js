@@ -1,7 +1,7 @@
 // Couches restantes à charger
 var remaining = 10;
 var loadingPanel;
-var refreshTime = 5000;
+var refreshTime = 10000;
 CUB.ready(function () {
     // Initialisation de l'API CUB
     CUB.init(document.getElementById('map'), {
@@ -34,7 +34,7 @@ CUB.ready(function () {
         var ligne = lignes_bus_1[_a];
         createLigne(ligne.ligneGid, ligne.nom, ligne.color);
         createBus(ligne.ligneGid, ligne.label, ligne.color);
-        //CheminBus(ligne.ligneGid, ligne.label, ligne.color);
+        CheminBus(ligne.ligneGid, ligne.label, ligne.color);
     }
 });
 /**

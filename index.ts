@@ -4,7 +4,7 @@ declare var CUB: any;
 // Couches restantes à charger
 let remaining = 10;
 let loadingPanel;
-let refreshTime = 5000;
+let refreshTime = 10000;
 
 CUB.ready(() => {
     // Initialisation de l'API CUB
@@ -42,7 +42,7 @@ CUB.ready(() => {
     for(const ligne of lignes_bus) {
         createLigne(ligne.ligneGid, ligne.nom, ligne.color);
         createBus(ligne.ligneGid, ligne.label, ligne.color);
-        //CheminBus(ligne.ligneGid, ligne.label, ligne.color);
+        CheminBus(ligne.ligneGid, ligne.label, ligne.color);
     }
 });
 
