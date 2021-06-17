@@ -41,7 +41,7 @@ CUB.ready(() => {
     for(const ligne of lignes_bus) {
         createLigne(ligne.ligneGid, ligne.nom, ligne.color);
         createBus(ligne.ligneGid, ligne.label, ligne.color);
-        CheminBus(ligne.ligneGid, ligne.label, ligne.color);
+        //CheminBus(ligne.ligneGid, ligne.label, ligne.color);
     }
 });
 
@@ -111,7 +111,7 @@ function createBus(ligneGid: number, label: string, color: string) {
             labelOutlineWidth: 1.5,
             labelSize: 12,
             labelBold: true,
-            label: '${TERMINUS}'+'Bateau'+'${VITESSE}'+'km/h', // Libellé de l'étiquette	
+            label: '${TERMINUS}'+'\n'+'${VITESSE}'+'km/h', // Libellé de l'étiquette	
             labelYOffset: -15,
             labelMaxScaledenom: 25000
         })

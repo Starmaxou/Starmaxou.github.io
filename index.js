@@ -33,7 +33,7 @@ CUB.ready(function () {
         var ligne = lignes_bus_1[_a];
         createLigne(ligne.ligneGid, ligne.nom, ligne.color);
         createBus(ligne.ligneGid, ligne.label, ligne.color);
-        CheminBus(ligne.ligneGid, ligne.label, ligne.color);
+        //CheminBus(ligne.ligneGid, ligne.label, ligne.color);
     }
 });
 /**
@@ -97,7 +97,7 @@ function createBus(ligneGid, label, color) {
             labelOutlineWidth: 1.5,
             labelSize: 12,
             labelBold: true,
-            label: '${TERMINUS}' + 'Bateau' + '${VITESSE}' + 'km/h',
+            label: '${TERMINUS}' + '\n' + '${VITESSE}' + 'km/h',
             labelYOffset: -15,
             labelMaxScaledenom: 25000
         })
