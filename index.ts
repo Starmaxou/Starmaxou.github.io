@@ -111,7 +111,7 @@ function createBus(ligneGid: number, label: string, color: string) {
             labelOutlineWidth: 1.5,
             labelSize: 12,
             labelBold: true,
-            label: 'Bateau ${TERMINUS}'+'\n'+'${VITESSE}'+'km/h', // Libellé de l'étiquette	
+            label: '${TERMINUS}'+'Bateau'+'${VITESSE}'+'km/h', // Libellé de l'étiquette	
             labelYOffset: -15,
             labelMaxScaledenom: 25000
         })
