@@ -33,6 +33,7 @@ CUB.ready(function () {
         var ligne = lignes_bus_1[_a];
         createLigne(ligne.ligneGid, ligne.nom, ligne.color);
         createBus(ligne.ligneGid, ligne.label, ligne.color);
+        CheminBus(ligne.ligneGid, ligne.label, ligne.color);
     }
 });
 /**
