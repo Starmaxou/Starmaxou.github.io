@@ -97,7 +97,7 @@ function createBus(ligneGid, label, color) {
             labelOutlineWidth: 1.5,
             labelSize: 12,
             labelBold: true,
-            label: 'Bateau ${TERMINUS}' + '\n' + '${VITESSE}' + 'km/h',
+            label: '${TERMINUS}' + 'bateau' + '${VITESSE}' + 'km/h',
             labelYOffset: -15,
             labelMaxScaledenom: 25000
         })
